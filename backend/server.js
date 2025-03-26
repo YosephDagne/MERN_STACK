@@ -1,22 +1,20 @@
 require("dotenv").config();
-
 const express = require("express");
-const app = express(); // Create express app
 
-const PORT = process.env.PORT;
+// Create express app
+const app = express();
 
-// Middleware to log request method and path
+// Middleware 
 app.use((req, res, next) => {
   console.log(`Method: ${req.method}, Path: ${req.path}`); 
-  next();
+  next(); 
 });
 
 // Define the root route
 app.get("/", (req, res) => {
   res.json({ mssg: "Welcome to MERN Stack" });
 });
-
-// Listen on the specified port
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+//listen on port
+app.listen(process.env.PORT, () => {
+  console.log("Server listening on port", process.env.PORT);
 });
