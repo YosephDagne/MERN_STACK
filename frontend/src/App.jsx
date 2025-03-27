@@ -1,11 +1,18 @@
-import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import NavBar from "./components/NavBar";
 
 const App = () => {
   return (
     <div>
-      <h1 className="text-4xl font-bold text-center mt-10 text-blue-500">
-        Welcome to MERN Stack
-      </h1>
+      <BrowserRouter>
+        <NavBar />
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 };
