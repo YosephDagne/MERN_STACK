@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <div className="bg-[#fff]">
-      <div className="max-w-[1400px] m-0 mx-auto p-2.5 px-5 flex items-center justify-between">
-        <Link to="/" className="text-[#333]">
-          <h1 className="text-2xl font-bold text-gray-800">Workout Buddy</h1>
+    <div className="bg-white shadow-md">
+      <div className="max-w-[1400px] mx-auto p-3 px-6 flex items-center justify-between">
+        <Link
+          to="/"
+          className="text-gray-900 hover:text-blue-500 transition duration-300"
+        >
+          <h1 className="text-3xl font-extrabold">Workout Buddy</h1>
         </Link>
       </div>
     </div>

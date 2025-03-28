@@ -1,32 +1,31 @@
-import React, { useEffect  , useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Home = () => {
-
   const [workouts, setWorkouts] = useState([]);
-  useEffect(()=>{
 
-    const fetchWorkouts = async () => { 
-      const response = await fetch('/api/workouts');
+  useEffect(() => {
+    const fetchWorkouts = async () => {
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKGROUND_URL}/api/workouts`
+      );
       const data = await response.json();
-      if(response.ok){
+      if (response.ok) {
         setWorkouts(data);
       }
-      
-      
-    }
-    fetchWorkouts()
-  }, [])
+    };
+    fetchWorkouts();
+  }, []);
+
   return (
     <div>
       <div>
-        {
-          workouts && workouts.map((workout) => (
-            <p key={workout._id}>{ workout.title}</p>
-         ))
-        }
+        <div>
+          {workouts &&
+            workouts.map((workout) => <p key={workout._id}>{workout.title}</p>)}
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
