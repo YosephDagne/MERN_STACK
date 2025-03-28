@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
+:root{
+    --primary: #1aac83;
+    --error: #e74c3c;
+}
 body {
     background-color: #f7f7f7;
     margin: 0;

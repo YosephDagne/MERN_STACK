@@ -7,7 +7,7 @@ const App = () => {
     <div>
       <BrowserRouter>
         <NavBar />
-        <div>
+        <div className="max-w-[1400px] p-5 mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
