@@ -1,11 +1,14 @@
-require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
+
 const connectDb = require("./config/mongodb");
 const workoutRoutes = require("./routes/workouts");
 
 //Express app
 const app = express();
 // Middleware
+app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(`Method: ${req.method}, Path: ${req.path}`);
