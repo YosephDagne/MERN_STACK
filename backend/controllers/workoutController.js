@@ -59,7 +59,7 @@ const deleteWorkout = async (req, res) => {
         .status(404)
         .json({ message: `Workout with id ${id} not found` });
     }
-    res.status(200).json("Workout deleted successfully");
+    res.status(200).json(workout);
   } catch (error) {
     res.status(400).json({ error: "Invalid workout ID" });
   }
@@ -82,7 +82,7 @@ const updateWorkout = async (req, res) => {
         .status(404)
         .json({ message: `Workout with id ${id} not found` });
     }
-    res.status(200).json("Workout updated successfully");
+    res.status(200).json(workout);
   } catch (error) {
     res.status(400).json({ error: "Invalid workout ID" });
   }
