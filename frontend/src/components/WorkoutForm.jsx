@@ -89,7 +89,10 @@ const WorkoutForm = () => {
 
         <button
           type="submit"
-          className="w-full py-3 text-white font-bold rounded-md bg-gradient-to-r from-green-500 to-blue-700 hover:from-blue-600 hover:to-green-800 transition-all shadow-lg text-lg cursor-pointer"
+          className="w-full py-2 text-white font-bold rounded-lg bg-gradient-to-r from-green-500 to-blue-700 
+             hover:from-blue-600 hover:to-green-800 transition-all duration-500  
+             shadow-md hover:shadow-xl active:scale-110 text-lg cursor-pointer"
+          aria-label="Add Workout"
         >
           Add Workout
         </button>
