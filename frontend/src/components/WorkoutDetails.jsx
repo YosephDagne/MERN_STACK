@@ -1,9 +1,9 @@
 import React from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
-import { img_data } from "../assets/img_data.js";
-
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutContext();
+
   const handleClick = async () => {
     const response = await fetch(
       `${import.meta.env.VITE_BACKEND_URL}/api/workouts/${workout._id}`,
@@ -28,20 +28,20 @@ const WorkoutDetails = ({ workout }) => {
         <p className="text-sm text-gray-600">
           <strong>Repetitions:</strong> {workout.repetitions}
         </p>
-        <p className="text-sm text-gray-600">{workout.createdAt}</p>
+        <p className="text-sm text-gray-600"><strong>created:</strong>
+          {formatDistanceToNow(new Date(workout.createdAt), {
+            addSuffix: true,
+          })}
+        </p>
       </div>
 
       {/* Delete Button pushed to the right */}
       <button
         onClick={handleClick}
-        className="p-2 rounded-full bg-gray-200 hover:bg-red-400 transition duration-500 shadow-md hover:shadow-lg cursor-pointer hover:border-[1px]"
+        className="cursor-pointer"
         aria-label="Delete workout"
       >
-        <img
-          className="w-6 h-6 object-contain"
-          src={img_data.image}
-          alt="Delete"
-        />
+        <span class="material-symbols-outlined">delete</span>
       </button>
     </div>
   );

@@ -18,7 +18,7 @@ const { workouts, dispatch } = useWorkoutContext();
     };
 
     fetchWorkouts();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="grid md:grid-cols-2 gap-10 p-6 max-w-6xl mx-auto">

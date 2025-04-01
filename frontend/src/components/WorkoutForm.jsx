@@ -7,6 +7,7 @@ const WorkoutForm = () => {
   const [load, setLoad] = useState("");
   const [repetitions, setRepetitions] = useState("");
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +26,8 @@ const WorkoutForm = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "Failed to create workout");
+        setError(data.error);
+        setEmptyFields(data.emptyFields);
         return;
       }
 
@@ -34,6 +36,7 @@ const WorkoutForm = () => {
       setLoad("");
       setRepetitions("");
       setError(null);
+      setEmptyFields([]);
       console.log("New workout created:", data);
       dispatch({ type: "CREATE_WORKOUT", payload: data });
     } catch (err) {
@@ -56,7 +59,9 @@ const WorkoutForm = () => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all text-lg"
+            className={`w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all text-lg ${
+              emptyFields.includes("title") ? "border-red-500" : ""
+            }`}
             placeholder="Enter exercise title"
           />
         </div>
@@ -69,7 +74,9 @@ const WorkoutForm = () => {
             type="number"
             value={load}
             onChange={(e) => setLoad(e.target.value)}
-            className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all text-lg"
+            className={`w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all text-lg ${
+              emptyFields.includes("load") ? "border-red-500" : ""
+            }`}
             placeholder="Enter weight in kg"
           />
         </div>
@@ -82,7 +89,9 @@ const WorkoutForm = () => {
             type="number"
             value={repetitions}
             onChange={(e) => setRepetitions(e.target.value)}
-            className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all text-lg"
+            className={`w-full px-4 py-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all text-lg ${
+              emptyFields.includes("repetitions") ? "border-red-500" : ""
+            }`}
             placeholder="Enter number of repetitions"
           />
         </div>
